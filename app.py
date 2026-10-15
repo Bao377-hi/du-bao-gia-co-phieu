@@ -277,7 +277,7 @@ def run_analysis(df, horizon, epochs):
         future_scaled.append(next_value)
 
         last_window = np.concatenate([
-            last_window[:, 1:, 🙂,
+            last_window[:, 1:, 
             np.array(next_value, dtype=np.float32).reshape(1, 1, 1)
         ], axis=1)
 
