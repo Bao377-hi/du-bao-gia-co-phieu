@@ -276,10 +276,13 @@ def run_analysis(df, horizon, epochs):
 
         future_scaled.append(next_value)
 
-        last_window = np.concatenate([
-            last_window[:, 1:, 
-            np.array(next_value, dtype=np.float32).reshape(1, 1, 1)
-        ], axis=1)
+        last_window = np.concatenate(
+            [
+                last_window[:, 1:, :],
+                np.array(next_value, dtype=np.float32).reshape(1, 1, 1),
+            ],
+            axis=1,
+        )
 
     future_prices = scaler_future.inverse_transform(
         np.array(future_scaled).reshape(-1, 1)
